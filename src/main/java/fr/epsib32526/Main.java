@@ -37,6 +37,47 @@ public class Main {
                 livreAModifier.setTitre("Du plaisir dans la cuisine");
             }
             em.getTransaction().commit();
+
+            // Requête JPQL pour extraire de la base un livre en fonction de son titre
+            String titreRecherche = "Germinal";
+            Livre livreTrouve = em.createQuery("SELECT l FROM Livre l WHERE l.titre = :titre", Livre.class)
+                                    .setParameter("titre", titreRecherche)
+                                    .getSingleResult();
+            if (livreTrouve != null) {
+                System.out.println("Livre trouvé : " + livreTrouve.getTitre() + " , Auteur : " + livreTrouve.getAuteur());
+            }else {
+                System.out.println("Aucun livre trouvé avec le titre : " + titreRecherche);
+            }
+
+            // Requête JPQL pour extraire de la base un livre en fonction de son auteur
+            String auteurRecherche = "Jules Verne";
+            Livre livreTrouveParAuteur = em.createQuery("SELECT l FROM Livre l WHERE l.auteur = :auteur", Livre.class)
+                                            .setParameter("auteur", auteurRecherche)
+                                            .getSingleResult();
+            if (livreTrouveParAuteur != null) {
+                System.out.println("Livre trouvé : " + livreTrouveParAuteur.getTitre() + " , Auteur : " + livreTrouveParAuteur.getAuteur());
+            }else {
+                System.out.println("Aucun livre trouvé pour l'auteur : " + auteurRecherche);
+            }
+
+
+            // Suppression d'un livre
+            em.getTransaction().begin();
+            Livre livreASupprimer = em.find(Livre.class, 3);
+            if (livreASupprimer != null) {
+                em.remove(livreASupprimer);
+                System.out.println("Livre avec l'id 3 supprimé.");
+            } else {
+                System.out.println("Livre avec l'id 3 n'existe pas.");
+            }
+
+            em.getTransaction().commit();
+
+            // Affichage de tous les livres
+            System.out.println("Liste de tous les livres :");
+            em.createQuery("SELECT l FROM Livre l", Livre.class)
+                .getResultList()
+                .forEach(l -> System.out.println("Titre : " + l.getTitre() + " , Auteur : " + l.getAuteur()));
         }
     }
 

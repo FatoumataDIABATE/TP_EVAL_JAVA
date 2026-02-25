@@ -14,6 +14,10 @@ public class Fish extends Animal {
         return livingEnv;
     }
 
+    public enum FishLivEnv {
+        FRESH_WATER,
+        SEA_WATER
+    }
     public void setLivingEnv(FishLivEnv livingEnv) {
         this.livingEnv = livingEnv;
     }

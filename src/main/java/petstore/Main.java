@@ -60,21 +60,21 @@ public class Main {
 
             // Insertion des animaux
             Fish fish1 = new Fish();
-            fish1.setLivingEnv(Animal.FishLivEnv.FRESH_WATER);
+            fish1.setLivingEnv(Fish.FishLivEnv.FRESH_WATER);
             fish1.setBirth(new Date());
             fish1.setCouleur("rouge");
             fish1.setPetStore(boutique1);
             em.persist(fish1);
 
             Fish fish2 = new Fish();
-            fish2.setLivingEnv(Animal.FishLivEnv.SEA_WATER);
+            fish2.setLivingEnv(Fish.FishLivEnv.SEA_WATER);
             fish2.setBirth(new Date());
             fish2.setCouleur("bleu");
             fish2.setPetStore(boutique2);
             em.persist(fish2);
 
             Fish fish3 = new Fish();
-            fish3.setLivingEnv(Animal.FishLivEnv.FRESH_WATER);
+            fish3.setLivingEnv(Fish.FishLivEnv.FRESH_WATER);
             fish3.setBirth(new Date());
             fish3.setCouleur("jaune");
             fish3.setPetStore(boutique3);
@@ -107,6 +107,7 @@ public class Main {
             p1.setLabel("Croquettes pour chat");
             p1.setPrice(9.99);
             p1.setPetStore(boutique1);
+            p1.setType(Product.ProdType.FOOD);
             em.persist(p1);
 
             Product p2 = new Product();
@@ -114,6 +115,7 @@ public class Main {
             p2.setLabel("Nourriture pour poisson rouge");
             p2.setPrice(4.50);
             p2.setPetStore(boutique2);
+            p2.setType(Product.ProdType.ACCESSORY);
             em.persist(p2);
 
             Product p3 = new Product();
@@ -121,6 +123,7 @@ public class Main {
             p3.setLabel("Litière naturelle pour chat");
             p3.setPrice(6.75);
             p3.setPetStore(boutique3);
+            p3.setType(Product.ProdType.CLEANING);
             em.persist(p3);
 
             em.getTransaction().commit();

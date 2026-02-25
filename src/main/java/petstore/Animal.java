@@ -26,17 +26,6 @@ public class Animal {
         this.couleur = couleur;
     }
 
-    public enum FishLivEnv {
-        FRESH_WATER,
-        SEA_WATER
-    }
-
-    public enum ProdType {
-        FOOD,
-        ACCESSORY,
-        CLEANING
-    }
-
      public Animal() {
 
      }

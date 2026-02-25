@@ -14,7 +14,7 @@ public class Product {
     @Column(name = "LABEL", nullable = false, length = 50)
     private String label;
     @Enumerated(EnumType.STRING)
-    private Animal.ProdType type;
+    private ProdType type;
     @Column(name = "PRICE", nullable = false, length = 50)
     private Double price;
 
@@ -64,11 +64,17 @@ public class Product {
         this.price = price;
     }
 
-    public Animal.ProdType getType() {
+    public enum ProdType {
+        FOOD,
+        ACCESSORY,
+        CLEANING
+    }
+
+    public ProdType getType() {
         return type;
     }
 
-    public void setType(Animal.ProdType type) {
+    public void setType(ProdType type) {
         this.type = type;
     }
 
